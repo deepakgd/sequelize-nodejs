@@ -1,7 +1,8 @@
 // npm packages
 const express = require('express'),
     moment = require('moment-timezone'),
-    to = require('await-to-js').to;
+    to = require('await-to-js').to,
+    sequelize = require('sequelize');
 
 // local handlers
 const config = require('./config'),
