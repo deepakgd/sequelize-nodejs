@@ -1,5 +1,6 @@
 const dotenv = require('dotenv').config();
 const config = require('./index');
+const Sequelize = require('sequelize')
 
 // logging: console.log
 
@@ -15,6 +16,7 @@ module.exports = {
     min: 0,
     idle: 10000
   },
+  operatorsAliases: Sequelize.Op,
   define: {
     timestamps: true,
     underscores: false,
