@@ -5,8 +5,8 @@ const express = require('express'),
     sequelize = require('sequelize');
 
 // local handlers
-const config = require('./config'),
-    models = require('./models');
+const config = require('../../config'),
+    models = require('../models');
 
 
 //express router
@@ -15,12 +15,7 @@ const router = express.Router()
 //moment deprecation warnings
 moment.suppressDeprecationWarnings = true
 
-function handleError(res, error) {
-  console.log(error)
-  return res.status(500).json(error)
-}
-
-
+// sample get request
 router.get('/users', async (req, res, next)=>{
   let [error, users] = await to(models.users.findAll({}));
   if(error) return res.status(500).json({ error: error });

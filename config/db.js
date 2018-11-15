@@ -1,5 +1,5 @@
 const dotenv = require('dotenv').config();
-const config = require('../app/config');
+const config = require('./index');
 
 // logging: console.log
 
