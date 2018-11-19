@@ -26,5 +26,20 @@ router.get('/users', async (req, res, next)=>{
   return res.json({ data: users });
 })
 
+/**
+ * /user/create - create user
+ */
+router.post('/user/create', async (req, res, next)=>{
+  let [error, users] = await to(userController.createUser(req.body));
+  if(error) return utils.helper.handleError(res, error.status, error);
+  return res.json({ data: users });
+})
+
+
+router.post('/test/transactions', async (req, res, next)=>{
+  let [error, users] = await to(userController.createUserAndAssiciateDepartment(req.body));
+  if(error) return utils.helper.handleError(res, error.status, error);
+  return res.json({ data: users });
+})
 module.exports = router
 

@@ -1,9 +1,10 @@
 const to = require('await-to-js').to,
-     moment = require('moment');
+     moment = require('moment'),
+     bcrypt = require('bcrypt');
      
-
 const config = require('../../config');
 
+const saltRounds = 10;
 
 var self = module.exports = {
     /**
@@ -32,7 +33,15 @@ var self = module.exports = {
         console.log(error);
         res.status(statusCode).json(error);
     },
-    generatePassword: function(){
-        
+    generatePassword: function(password){
+        return new Promise( async (resolve, reject) => {
+            bcrypt.genSalt(saltRounds, function(err, salt) {
+                if(err) return reject(err);
+                bcrypt.hash(password, salt, function(err, hash) {
+                    if(err) return reject(err);
+                    resolve(hash)
+                });
+            });
+        })
     }
 }
