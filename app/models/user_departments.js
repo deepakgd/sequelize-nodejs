@@ -1,30 +1,18 @@
-module.exports = (sequelize, DataTypes) =>{
-    var users = sequelize.define('users', {
+module.exports = (sequelize, DataTypes)=>{
+    var user_departments = sequelize.define('user_departments', {
         id: {
             allowNull: false,
-            autoIncrement: true,
             primaryKey: true,
+            autoIncrement: true,
             type: DataTypes.INTEGER
         },
-        first_name: {
-            type: DataTypes.STRING
-        },
-        last_name: {
-            type: DataTypes.STRING
-        },
-        name: {
-            type: DataTypes.STRING
-        },
-        email: {
-            type: DataTypes.STRING,
-            unique: true,
+        user_id: {
+            type: DataTypes.INTEGER,
             allowNull: false
         },
-        password: {
-            type: DataTypes.STRING
-        },
-        phone: {
-            type: DataTypes.STRING
+        department_id: {
+            type: DataTypes.INTEGER,
+            allowNull: false
         },
         created_at: {
             type: 'TIMESTAMP',
@@ -42,7 +30,6 @@ module.exports = (sequelize, DataTypes) =>{
 
             }
         }
-    })
-
-    return users;
+    });
+    return user_departments;
 }
